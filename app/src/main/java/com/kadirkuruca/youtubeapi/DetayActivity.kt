@@ -3,6 +3,7 @@ package com.kadirkuruca.youtubeapi
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_detay.*
@@ -19,6 +20,7 @@ class DetayActivity : AppCompatActivity() {
     var PLAYLIST_ID : String ? = null
     var gelenVeri : PlaylistVideo? = null
     var videoListesi : List<PlaylistVideo.Items>? = null
+    var myAdapter : PlaylistVideosAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +40,12 @@ class DetayActivity : AppCompatActivity() {
             override fun onResponse(call: Call<PlaylistVideo>?, response: Response<PlaylistVideo>?) {
                 gelenVeri = response?.body()
                 videoListesi = gelenVeri?.items
+
+                myAdapter = PlaylistVideosAdapter(videoListesi)
+                recyclerDetay.adapter = myAdapter
+
+                var myLayoutManager = LinearLayoutManager(this@DetayActivity,LinearLayoutManager.VERTICAL,false)
+                recyclerDetay.layoutManager = myLayoutManager
             }
 
             override fun onFailure(call: Call<PlaylistVideo>?, t: Throwable?) {
