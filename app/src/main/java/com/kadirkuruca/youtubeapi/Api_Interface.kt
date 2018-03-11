@@ -16,7 +16,7 @@ interface Api_Interface {
     fun tumListeleriGetir(@Query("channelId") channelId : String, @Query("key") apiKey : String, @Query("maxResults") limit : Int) : Call<PlaylistData>
 
     @GET("playlistItems?part=snippet%2CcontentDetails%2Cstatus")
-    fun VideoGetir(@Query("playlistId") playlistId : String, @Query("key") apiKey : String, @Query("maxResults") limit : Int) : Call<PlaylistVideo>
+    fun videoGetir(@Query("playlistId") playlistId : String, @Query("key") apiKey : String, @Query("maxResults") limit : Int) : Call<PlaylistVideo>
 
 
 }

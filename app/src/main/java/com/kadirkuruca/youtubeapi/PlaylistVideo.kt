@@ -15,7 +15,7 @@ class PlaylistVideo {
     @SerializedName("pageInfo")
     var pageInfo: PageInfo? = null
     @SerializedName("items")
-    var items: List<İtems>? = null
+    var items: List<Items>? = null
 
     class PageInfo {
         @SerializedName("totalResults")
@@ -122,7 +122,7 @@ class PlaylistVideo {
         var privacyStatus: String? = null
     }
 
-    class İtems {
+    class Items {
         @SerializedName("kind")
         var kind: String? = null
         @SerializedName("etag")
